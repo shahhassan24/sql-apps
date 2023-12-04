@@ -22,15 +22,23 @@ router.get("/detail", (_, res) =>
  */
 
 // connect to postgres
+const pg = require("pg");
+const pool = new pg.Pool({
+  user: "apple",
+  host: "localhost",
+  database: "recipeguru",
+  password: "lol",
+  port: 5432,
+});
 
 router.get("/search", async function (req, res) {
-  console.log("search recipes");
+  console.log("search recipes", req);
 
   // return recipe_id, title, and the first photo as url
   //
   // for recipes without photos, return url as default.jpg
 
-  res.status(501).json({ status: "not implemented", rows: [] });
+  res.status(200).json({ status: "implementing", rows: [] });
 });
 
 router.get("/get", async (req, res) => {
