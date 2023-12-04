@@ -49,7 +49,7 @@ router.get("/search", async (req, res) => {
 
   if (term) {
     where_clause = `WHERE CONCAT(title, type) ILIKE $2`;
-    params.push(item);
+    params.push(`%${term}%`);
   }
 
   const { rows } = await pool.query(
